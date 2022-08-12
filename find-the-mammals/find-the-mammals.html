@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find the Mammals</title>
+
+    <link href="find-the-mammals.css" rel="stylesheet"/>
+</head>
+<body>
+<main>
+    <header>
+        <h1>Find the Mammals</h1>
+        <button id="toggleMammals">Separate Mammals</button>
+    </header>
+    <article>
+        <h2>All animals</h2>
+        <section class='all-animals'>
+            <div class='animal'>
+                <h3>Dog 🐶</h3>
+                <p>mammal: <span class='mammal-value'>true</span></p>
+            </div>
+            <div class='animal'>
+                <h3>Snake 🐍</h3>
+                <p>mammal: <span class='mammal-value'>false</span></p>
+            </div>
+            <div class='animal'>
+                <h3>Cheetah 🐆</h3>
+                <p>mammal: <span class='mammal-value'>true</span></p>
+            </div>
+            <div class='animal'>
+                <h3>Turtle 🐢</h3>
+                <p>mammal: <span class='mammal-value'>false</span></p>
+            </div>
+            <div class='animal'>
+                <h3>Frog 🐸</h3>
+                <p>mammal: <span class='mammal-value'>false</span></p>
+            </div>
+            <div class='animal'>
+                <h3>Cat 🐈</h3>
+                <p>mammal: <span class='mammal-value'>true</span></p>
+            </div>
+            <div class='animal'>
+                <h3>Badger 🦡</h3>
+                <p>mammal: <span class='mammal-value'>true</span></p>
+            </div>
+        </section>
+    </article>
+    <article>
+        <h2>Mammals</h2>
+        <section id='only-mammals'></section>
+    </article>
+</main>
+<script type="application/javascript">
+    window.onload = function () {
+        let mammalsSeparated = false
+        let onlyMammals = []
+
+        function separateMammals() {
+            const animalList = document.querySelector('.all-animals')
+            animalList.childNodes.forEach(child => {
+                if (child?.querySelector) {
+                    const mammalValue = child.querySelector('.mammal-value')
+                    if (mammalValue.innerHTML === 'true') onlyMammals.push(child)
+                }
+            })
+
+            if (onlyMammals.length > 0) {
+                const onlyMammalsTarget = document.querySelector('#only-mammals')
+
+                onlyMammals.forEach(mammal => {
+                    onlyMammalsTarget.appendChild(mammal)
+                })
+            }
+
+            // reset state
+            mammalsSeparated = true
+
+            // change btn text
+            toggleMammals.innerHTML = 'Put Mammals back'
+        }
+
+        function putMammalsBack() {
+            const animalList = document.querySelector('.all-animals')
+
+            onlyMammals.forEach(child => {
+                animalList.appendChild(child)
+            })
+
+            // reset state
+            mammalsSeparated = false
+            onlyMammals = []
+
+            // change btn text
+            toggleMammals.innerHTML = 'Separate Mammals'
+        }
+
+        toggleMammals.addEventListener('click', () => {
+            if (mammalsSeparated) {
+                putMammalsBack()
+            } else {
+                separateMammals()
+            }
+        })
+    }
+</script>
+</body>
+</html>
