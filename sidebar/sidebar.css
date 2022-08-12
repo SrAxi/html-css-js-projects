@@ -1,0 +1,137 @@
+html, body {
+    background: #f5f5f5;
+    color: #171717;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: "DejaVu Sans Mono for Powerline", sans-serif;
+    height: 100vh;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+header nav {
+    height: 4rem;
+}
+
+header nav button {
+    position: relative;
+    float: right;
+    width: 5rem;
+    height: 3rem;
+    padding: .5rem;
+    margin: 1rem 2rem .4rem .4rem;
+    border: solid #171717 2px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: inherit;
+    letter-spacing: .2rem;
+}
+
+:root {
+    /* Width of the sidebar */
+    --SIDEBAR_W: 16rem;
+}
+
+aside.sidebar {
+    position: absolute;
+    top: 0;
+    background: #171717;
+    color: #f5f5f5;
+    width: var(--SIDEBAR_W);
+    height: 100%;
+    padding: 4rem;
+    border-radius: 0 5px 5px 0;
+}
+
+aside.sidebar nav {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.8rem;
+}
+
+aside.sidebar article {
+    position: relative;
+    margin-top: 8.5rem;
+    font-size: 1.2rem;
+}
+
+aside.sidebar article section {
+    position: relative;
+    margin-top: 1.4rem;
+}
+
+aside.sidebar article section:hover {
+    cursor: pointer;
+}
+
+/***************
+ * `X` button` *
+ ***************/
+:root {
+    /* Width and height of the box containing the "X" */
+    --BUTTON_W: 2.5rem;
+    /* This is the length of either of the 2 lines which form the "X", as a
+    percentage of the width of the button. */
+    --CLOSE_X_W: 95%;
+    /* Thickness of the lines of the "X" */
+    --CLOSE_X_THICKNESS: .25rem;
+}
+
+aside.sidebar button.close-button {
+    position: relative;
+    float: right;
+    border: none;
+    background-color: transparent;
+    width: var(--BUTTON_W);
+    height: var(--BUTTON_W);
+}
+
+/* The "X" in the button. "before" and "after" each represent one of the two lines of the "X" */
+aside.sidebar button.close-button:before,
+aside.sidebar button.close-button:after {
+    content: '';
+    position: absolute;
+    width: var(--CLOSE_X_W);
+    height: var(--CLOSE_X_THICKNESS);
+    background-color: #f5f5f5;
+    border-radius: 2px;
+    box-shadow: 0 0 2px 0 #ccc;
+}
+
+/* One line of the "X" */
+aside.sidebar button.close-button:before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: calc((100% - var(--CLOSE_X_W)) / 2);
+}
+
+/* The other line of the "X" */
+aside.sidebar button.close-button:after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    right: calc((100% - var(--CLOSE_X_W)) / 2);
+}
+
+/*********************
+ * show/hide Sidebar *
+ *********************/
+aside.sidebar.show,
+aside.sidebar.hide {
+    transition: all 500ms ease;
+}
+
+aside.sidebar.show {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+aside.sidebar.hide {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+}
+

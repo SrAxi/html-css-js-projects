@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sidebar</title>
+
+    <link href="sidebar.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <nav>
+        <button id="menu">MENU</button>
+    </nav>
+</header>
+<main>
+    <aside id="sidebar" class="sidebar">
+        <nav>
+            <button id="closeBtn" class="close-button"/>
+        </nav>
+        <article>
+            <section>Home</section>
+            <section>About</section>
+            <section>Work</section>
+            <section>Contact</section>
+        </article>
+    </aside>
+</main>
+<script type="application/javascript">
+    window.onload = function () {
+        function openMenu() {
+            sidebar.classList.add('show')
+            sidebar.classList.remove('hide')
+        }
+        function closeMenu() {
+            sidebar.classList.add('hide')
+            sidebar.classList.remove('show')
+        }
+
+        menu.addEventListener('click', () => {
+            openMenu()
+        })
+
+        closeBtn.addEventListener('click', () => {
+            closeMenu()
+        })
+    }
+</script>
+</body>
+</html>
